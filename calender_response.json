@@ -1,0 +1,78 @@
+{
+  "message": "요청이 정상 처리되었습니다.",
+  "data": [
+    {
+      "calendarId": 21,
+      "checkListId": 1,
+      "itemName": "쓰레기통비우기",
+      "entryId": null,
+      "checkTime": null,
+      "isChecked": false,
+      "shareUser": 45,
+      "shareUserName": "이현성",
+      "createUser": 2,
+      "createUserName": "차종원"
+    },
+    {
+      "calendarId": 21,
+      "checkListId": 2,
+      "itemName": "세면대닦기",
+      "entryId": null,
+      "checkTime": null,
+      "isChecked": false,
+      "shareUser": 45,
+      "shareUserName": "이현성",
+      "createUser": 2,
+      "createUserName": "차종원"
+    },
+    {
+      "calendarId": 22,
+      "checkListId": 3,
+      "itemName": "바닥 닦기",
+      "entryId": 1,
+      "checkTime": "2025-06-09T00:00:00",
+      "isChecked": true,
+      "shareUser": null,
+      "shareUserName": null,
+      "createUser": null,
+      "createUserName": null
+    },
+    {
+      "calendarId": 22,
+      "checkListId": 4,
+      "itemName": "벽 닦기",
+      "entryId": null,
+      "checkTime": null,
+      "isChecked": false,
+      "shareUser": null,
+      "shareUserName": null,
+      "createUser": null,
+      "createUserName": null
+    },
+    {
+      "calendarId": 23,
+      "checkListId": 5,
+      "itemName": "바닥 닦기",
+      "entryId": null,
+      "checkTime": null,
+      "isChecked": false,
+      "shareUser": null,
+      "shareUserName": null,
+      "createUser": null,
+      "createUserName": null
+    },
+    {
+      "calendarId": 23,
+      "checkListId": 6,
+      "itemName": "벽 닦기",
+      "entryId": null,
+      "checkTime": null,
+      "isChecked": false,
+      "shareUser": null,
+      "shareUserName": null,
+      "createUser": null,
+      "createUserName": null
+    }
+  ],
+  "code": 200
+}

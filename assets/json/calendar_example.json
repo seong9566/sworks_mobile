@@ -1,0 +1,84 @@
+{
+    "message": "성공",
+    "code": 200,
+    "data": [
+      {
+        "scheduleId": "1",
+        "title": "로비 대청소",
+        "description": "본관동 로비 대청소",
+        "siteId": 101,
+        "clientId": 201,
+        "codeId": 1,
+        "isAllDay": true,
+        "startDate": "2025-06-25T09:00:00.000Z",
+        "endDate": "2025-06-25T12:00:00.000Z",
+        "viewColor": "FF3B30",
+        "alarmYn": true
+      },
+      {
+        "scheduleId": "1",
+        "title": "사무실 청소",
+        "description": "본인 자리 청소",
+        "siteId": 101,
+        "clientId": 201,
+        "codeId": 1,
+        "isAllDay": true,
+        "startDate": "2025-06-25T09:00:00.000Z",
+        "endDate": "2025-06-25T12:00:00.000Z",
+        "viewColor": "FF3B30",
+        "alarmYn": true
+      },
+      {
+        "scheduleId": "1",
+        "title": "사무실 청소1",
+        "description": "본인 자리 청소1",
+        "siteId": 101,
+        "clientId": 201,
+        "codeId": 1,
+        "isAllDay": true,
+        "startDate": "2025-06-25T09:00:00.000Z",
+        "endDate": "2025-06-25T12:00:00.000Z",
+        "viewColor": "FF3B30",
+        "alarmYn": true
+      },
+      {
+        "scheduleId": "1",
+        "title": "사무실 청소2",
+        "description": "본인 자리 청소2",
+        "siteId": 101,
+        "clientId": 201,
+        "codeId": 1,
+        "isAllDay": true,
+        "startDate": "2025-06-25T09:00:00.000Z",
+        "endDate": "2025-06-25T12:00:00.000Z",
+        "viewColor": "FF3B30",
+        "alarmYn": true
+      },
+      {
+        "scheduleId": "2",
+        "title": "화장실 청소",
+        "description": "본관동 1층 화장실 청소",
+        "siteId": 101,
+        "clientId": 202,
+        "codeId": 2,
+        "isAllDay": false,
+        "startDate": "2025-06-26T14:00:00.000Z",
+        "endDate": "2025-06-26T15:00:00.000Z",
+        "viewColor": "6D4C41",
+        "alarmYn": false
+      },
+      {
+        "scheduleId": "3",
+        "title": "계단 청소",
+        "description": "본관동 계단 청소",
+        "siteId": 102,
+        "clientId": 203,
+        "codeId": 3,
+        "isAllDay": false,
+        "startDate": "2025-06-27T10:00:00.000Z",
+        "endDate": "2025-06-27T11:00:00.000Z",
+        "viewColor": "2962FF",
+        "alarmYn": true
+      }
+    ]
+  }

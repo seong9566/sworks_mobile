@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "975179910145",
+    "project_id": "fcmalarmproject",
+    "storage_bucket": "fcmalarmproject.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:975179910145:android:cc37962b3ca77c7322c400",
+        "android_client_info": {
+          "package_name": "com.example.calender_test"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXrFj-D9gkmzRrVY5Y0Ayz5PHfunx5GBM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
