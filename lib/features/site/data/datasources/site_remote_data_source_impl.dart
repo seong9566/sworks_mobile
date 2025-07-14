@@ -7,10 +7,10 @@ import 'package:sworks_mobile/network/base_response.dart';
 import 'package:sworks_mobile/network/dio_client.dart';
 import 'package:dio/dio.dart';
 
-class siteRemoteDataSourceImpl implements siteRemoteDataSource {
+class SiteRemoteDataSourceImpl implements SiteRemoteDataSource {
   final DioClient _dioClient;
 
-  siteRemoteDataSourceImpl(this._dioClient);
+  SiteRemoteDataSourceImpl(this._dioClient);
 
   @override
   Future<BaseResponse<List<SiteResponseModel>>> getsiteLocations() async {

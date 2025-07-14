@@ -3,7 +3,7 @@ import 'package:sworks_mobile/network/base_response.dart';
 
 abstract class AuthRemoteDataSource {
   Future<BaseResponse<LoginResponseModel>> login(
-    String userId,
+    String loginId,
     String userPassword,
     String fcmToken,
   );

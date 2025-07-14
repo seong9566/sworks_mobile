@@ -14,7 +14,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
   @override
   Future<BaseResponse<LoginResponseModel>> login(
-    String userId,
+    String loginId,
     String userPassword,
     String fcmToken,
   ) async {
@@ -22,9 +22,9 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       final response = await _dioClient.post(
         ApiEndPoint.login,
         data: {
-          'loginId': userId,
+          'loginId': loginId,
           'loginPassword': userPassword,
-          // 'fcmToken': fcmToken,
+          'fcmToken': fcmToken,
         },
       );
       final Map<String, dynamic> responseData =

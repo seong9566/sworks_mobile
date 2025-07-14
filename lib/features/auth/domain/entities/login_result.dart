@@ -1,12 +1,28 @@
 /// 로그인 결과 타입 정의
+///   systemManager, 100 
+  // master, - 101
+  // manager, - 102
+  //  일반 사용자 로그인 성공 (코드 200)
+  // siteManager, -200
+  // user, -201
+  // guest, -202
 enum LoginResultType {
-  /// 관리자 로그인 성공 (코드 100)
-  manager,
 
-  /// 일반 사용자 로그인 성공 (코드 200)
+  // 100
+  systemManager, 
+  // 101
+  master, 
+  //102
+  manager, 
+
+  // 200
+  siteManager,
+  // 201
   user,
+  // 202
+  guest,
 
-  /// 비밀번호 변경 필요 (코드 201)
+  /// 비밀번호 변경 필요 (코드 199)
   changePassword,
 
   /// 로그인 실패 (기타 코드)

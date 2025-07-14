@@ -9,9 +9,9 @@ import 'package:sworks_mobile/network/dio_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // 데이터소스 Provider
-final siteRemoteDataSourceProvider = Provider<siteRemoteDataSource>((ref) {
+final siteRemoteDataSourceProvider = Provider<SiteRemoteDataSource>((ref) {
   final dioClient = ref.watch(dioClientProvider);
-  return siteRemoteDataSourceImpl(dioClient);
+  return SiteRemoteDataSourceImpl(dioClient);
 });
 
 // 리포지토리 Provider

@@ -53,16 +53,16 @@ class AppTheme {
   }
 }
 
-final TextStyle titleStyle = TextStyle(
+ const TextStyle titleStyle = TextStyle(
   fontSize: 24,
   fontWeight: FontWeight.bold,
   color: Colors.black,
 );
-final double defaultHPadding = 16;
-final Color unSelectColor = Color(0xff61758A);
-final Color selectColor = Color(0xff121417);
-final Color indicatorColor = Color(0xffc4cdd8);
-final Color primaryColor = Color(0xff223377);
-final Color borderSideColor = Color(0xffE0E0E0);
-// final Color scaffoldColor = Color(0xffE8EEFF);
-final Color scaffoldColor = Color(0xffF6F6F6);
+const double p16 = 16;
+const Color unSelectColor = Color(0xff61758A);
+const Color selectColor = Color(0xff121417);
+const Color indicatorColor = Color(0xffc4cdd8);
+const Color borderSideColor = Color(0xffE0E0E0);
+const Color primaryColor = Color(0xff223377);
+const Color scaffoldColor = Color(0xffFBFCFF);
+const Color grayBorderColor = Color(0xffE7E5E4);

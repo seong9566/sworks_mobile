@@ -1,4 +1,4 @@
-import 'package:sworks_mobile/core/theme/app_theme.dart';
+import 'package:sworks_mobile/core/theme/app_theme.dart' ;
 import 'package:sworks_mobile/features/auth/presentation/viewmodels/login_viewmodel.dart';
 import 'package:sworks_mobile/features/site/presentation/providers/site_providers_di.dart';
 import 'package:sworks_mobile/features/site/presentation/view/widgets/site_list_view.dart';
@@ -48,7 +48,7 @@ class _SiteSelectionViewState extends ConsumerState<SiteSelectionView> {
     }
   }
 
-  Center _errorWidget(SiteSelectionState state) {
+  Widget _errorWidget(SiteSelectionState state) {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -77,20 +77,11 @@ class _SiteSelectionViewState extends ConsumerState<SiteSelectionView> {
 
     return SafeArea(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: defaultHPadding),
+        padding: EdgeInsets.symmetric(horizontal: p16),
         child: ElevatedButton(
           onPressed: isButtonEnabled
               ? () async {
-                  // 로딩 표시를 위한 다이얼로그 표시
-                  showDialog(
-                    context: context,
-                    barrierDismissible: false,
-                    builder: (context) =>
-                        const Center(child: CircularProgressIndicator()),
-                  );
-
                   try {
-                    // 비동기로 사업장 추가 요청
                     await ref
                         .read(siteSelectionViewModelProvider.notifier)
                         .addsiteLocation(LoginStatusEnum.manager);

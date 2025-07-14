@@ -1,12 +1,20 @@
 class ApiEndPoint {
   // WEB
   // static const String baseUrl = "http://123.2.156.148:5245/api/";
-  static const String login = "v1/Login/W/Login";
-  static const String siteLocations = "v1/Login/W/sign/MySiteList";
-  static const String addUserLocationPermission = "v1/Login/W/sign/Permission";
 
   // Mobile
   static const String baseUrl = "http://123.2.156.148:5246/api/";
+  
+  /// 로그인
+  static const String login = "v1/Login/M/Login";
+  
+  /// 사업장 목록 조회
+  static const String siteLocations = "v1/Login/M/sign/MySiteList";
+  
+  /// 사업장 추가
+  static const String addUserLocationPermission = "v1/Login/M/sign/Permission";
+
+
 
   /// Login
   // static const String login = "v1/Login/M/Login";

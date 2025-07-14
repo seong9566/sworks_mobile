@@ -13,7 +13,6 @@ final GlobalKey<NavigatorState> rootNavKey = GlobalKey<NavigatorState>();
 final GlobalKey<NavigatorState> shellNavKey = GlobalKey<NavigatorState>();
 
 final router = GoRouter(
-  // initialLocation: '/calendar',
   navigatorKey: rootNavKey,
   initialLocation: '/login',
   routes: [

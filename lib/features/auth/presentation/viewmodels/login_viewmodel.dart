@@ -1,8 +1,7 @@
-import 'package:sworks_mobile/core/storage/secure_storage_util.dart';
 import 'package:sworks_mobile/features/auth/domain/entities/login_result.dart';
 import 'package:sworks_mobile/features/auth/domain/usecases/login_usecase.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-enum LoginStatusEnum { initial, loading, manager, user, changePwd, error }
+enum LoginStatusEnum { initial, loading, guest, siteManager, master,manager, systemManager, user, changePwd, error }
 
 class LoginStatus {
   final LoginStatusEnum loginStatus;
@@ -38,14 +37,14 @@ class LoginViewModel extends StateNotifier<LoginStatus> {
 
     try {
       // 2. 필요한 토큰 및 정보 가져오기
-      final fcmToken = await SecureStorageUtil.getFcmToken();
-      if (fcmToken == null) {
-        _handleError('FCM 토큰이 없습니다.');
-        return;
-      }
+      // final fcmToken = await SecureStorageUtil.getFcmToken();
+      // if (fcmToken == null) {
+      //   _handleError('FCM 토큰이 없습니다.');
+      //   return;
+      // }
 
       // 3. 로그인 API 호출 및 결과 처리
-      final result = await _loginUseCase.login(userId, userPassword, fcmToken);
+      final result = await _loginUseCase.login(userId, userPassword, 'testToken');
 
       // 4. 결과에 따른 상태 업데이트
       _handleLoginResult(result);
@@ -57,6 +56,48 @@ class LoginViewModel extends StateNotifier<LoginStatus> {
   /// 로그인 결과 처리
   void _handleLoginResult(LoginResult result) {
     switch (result.type) {
+       case LoginResultType.guest:
+        // 관리자 로그인 성공
+        if (result.accessToken != null &&
+            result.refreshToken != null &&
+            result.rule != null) {
+          state = state.copyWith(status: LoginStatusEnum.guest);
+        } else {
+          _handleError('토큰 정보가 올바르지 않습니다');
+        }
+        break;
+ case LoginResultType.siteManager:
+        // 관리자 로그인 성공
+        if (result.accessToken != null &&
+            result.refreshToken != null &&
+            result.rule != null) {
+          state = state.copyWith(status: LoginStatusEnum.siteManager);
+        } else {
+          _handleError('토큰 정보가 올바르지 않습니다');
+        }
+        break;
+ case LoginResultType.master:
+        // 관리자 로그인 성공
+        if (result.accessToken != null &&
+            result.refreshToken != null &&
+            result.rule != null) {
+          state = state.copyWith(status: LoginStatusEnum.master);
+        } else {
+          _handleError('토큰 정보가 올바르지 않습니다');
+        }
+        break;
+      case LoginResultType.systemManager:
+        // 관리자 로그인 성공
+        if (result.accessToken != null &&
+            result.refreshToken != null &&
+            result.rule != null) {
+          state = state.copyWith(status: LoginStatusEnum.systemManager);
+        } else {
+          _handleError('토큰 정보가 올바르지 않습니다');
+        }
+        break;
+
+
       case LoginResultType.manager:
         // 관리자 로그인 성공
         if (result.accessToken != null &&

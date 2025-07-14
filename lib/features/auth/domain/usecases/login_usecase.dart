@@ -26,7 +26,6 @@ class LoginUseCase {
       // 입력값 검증
       _validateLoginInputs(userId, userPassword);
 
-      // 저장소를 통한 로그인 요청
       final response = await _repository.login(
         userId.trim(),
         userPassword.trim(),
@@ -53,30 +52,63 @@ class LoginUseCase {
   }
 
   LoginResult _processLoginResponse(BaseResponse<LoginResponseModel> response) {
+    final role = _extractRoleFromMessage(response.message);
     switch (response.code) {
       case 100:
-        final rule = _extractRuleFromMessage(response.message);
+        // 관리자 로그인 성공
+        return LoginResult.success(
+          type: LoginResultType.systemManager,
+          accessToken: response.data.accessToken,
+          refreshToken: response.data.refreshToken,
+          rule: role,
+          code: response.code,
+        );
+ case 101:
+        // 관리자 로그인 성공
+        return LoginResult.success(
+          type: LoginResultType.master,
+          accessToken: response.data.accessToken,
+          refreshToken: response.data.refreshToken,
+          rule: role,
+          code: response.code,
+        );
+      case 102:
         // 관리자 로그인 성공
         return LoginResult.success(
           type: LoginResultType.manager,
           accessToken: response.data.accessToken,
           refreshToken: response.data.refreshToken,
-          rule: rule,
+          rule: role,
           code: response.code,
         );
-
       case 200:
         // 일반 사용자 로그인 성공
-        final rule = _extractRuleFromMessage(response.message);
+        return LoginResult.success(
+          type: LoginResultType.siteManager,
+          accessToken: response.data.accessToken,
+          refreshToken: response.data.refreshToken,
+          rule: role,
+          code: response.code,
+        );
+      case 201:
+        // 일반 사용자 로그인 성공
         return LoginResult.success(
           type: LoginResultType.user,
           accessToken: response.data.accessToken,
           refreshToken: response.data.refreshToken,
-          rule: rule,
+          rule: role,
           code: response.code,
         );
-
-      case 201:
+      case 202:
+        // 일반 사용자 로그인 성공
+        return LoginResult.success(
+          type: LoginResultType.guest,
+          accessToken: response.data.accessToken,
+          refreshToken: response.data.refreshToken,
+          rule: role,
+          code: response.code,
+        );
+      case 199:
         // 비밀번호 변경 필요
         return LoginResult.changePassword(code: response.code);
       case 400:
@@ -93,7 +125,7 @@ class LoginUseCase {
   }
 
   /// 메시지에서 권한 정보 추출
-  String _extractRuleFromMessage(String message) {
+  String _extractRoleFromMessage(String message) {
     if (message.contains('rule:')) {
       return message.split('rule:')[1].trim();
     }

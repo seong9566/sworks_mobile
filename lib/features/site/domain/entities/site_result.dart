@@ -3,7 +3,6 @@ import 'package:sworks_mobile/features/site/domain/entities/site_entity.dart';
 /// 비즈니스 작업 결과 타입 정의
 enum SiteResultType { success, failure }
 
-/// 비즈니스 작업 결과를 나타내는 도메인 클래스
 class SiteResult {
   final SiteResultType type;
   final List<SiteEntity>? locations;

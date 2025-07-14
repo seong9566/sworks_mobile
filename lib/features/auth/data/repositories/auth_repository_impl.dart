@@ -27,19 +27,15 @@ class AuthRepositoryImpl implements AuthRepository {
     );
 
     // 로그인 성공 시 SecureStorage에 정보 저장
-    if (response.code == 100 || response.code == 200) {
+    if (response.code == 100 || response.code == 101 || response.code == 102 || response.code == 200 || response.code == 201 || response.code == 202) {
       await SecureStorageUtil.saveLoginInfo(response.data);
 
-      // 토큰 정보 저장 메서드 호출
-      String rule = '';
-      if (response.message.contains('rule:')) {
-        rule = response.message.split('rule:')[1].trim();
-      }
-
+      // 권한 정보 추출
+      final role = RegExp(r'\((.*?)\)').firstMatch(response.message)?.group(1);
       await saveTokens(
         accessToken: response.data.accessToken,
         refreshToken: response.data.refreshToken,
-        rule: rule,
+        rule: role!,
       );
     }
 

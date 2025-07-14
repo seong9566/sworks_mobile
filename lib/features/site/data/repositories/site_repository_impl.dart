@@ -6,7 +6,7 @@ import 'package:sworks_mobile/features/site/domain/repositories/site_repository.
 import 'package:sworks_mobile/network/base_response.dart';
 
 class SiteRepositoryImpl implements SiteRepository {
-  final siteRemoteDataSource _remoteDataSource;
+  final SiteRemoteDataSource _remoteDataSource;
 
   SiteRepositoryImpl(this._remoteDataSource);
 
