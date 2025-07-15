@@ -20,6 +20,5 @@ class SiteResponseModel with _$SiteResponseModel {
 }
 
 extension SiteResponseModelExtension on SiteResponseModel {
-  SiteEntity toEntity() =>
-      SiteEntity(siteSeq: siteSeq, siteName: siteName, isSelected: false);
+  SiteEntity toEntity() => SiteEntity(siteSeq: siteSeq, siteName: siteName);
 }

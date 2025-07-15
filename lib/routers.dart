@@ -1,6 +1,7 @@
 import 'package:sworks_mobile/features/auth/presentation/view/password_change_view.dart';
+import 'package:sworks_mobile/features/system_manager/presentation/view/system_manager_home_view.dart';
 import 'package:sworks_mobile/features/base/presentation/base_view.dart';
-import 'package:sworks_mobile/features/site/presentation/view/site_selection_view.dart';
+import 'package:sworks_mobile/features/site/presentation/view/selete_site_view.dart';
 import 'package:sworks_mobile/features/calendar/presentation/view/calendar_view.dart';
 import 'package:sworks_mobile/features/auth/presentation/view/login_view.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,8 @@ final GlobalKey<NavigatorState> shellNavKey = GlobalKey<NavigatorState>();
 
 final router = GoRouter(
   navigatorKey: rootNavKey,
-  initialLocation: '/login',
+  // initialLocation: '/login',
+  initialLocation: '/system-manager',
   routes: [
     // 로그인 화면
     GoRoute(
@@ -34,7 +36,7 @@ final router = GoRouter(
       name: 'site-selection',
       pageBuilder: (context, state) => CustomTransitionPage(
         key: state.pageKey,
-        child: SiteSelectionView(),
+        child: SeleteSiteView(),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           final tween = Tween<Offset>(
             begin: Offset(1, 0),
@@ -56,6 +58,12 @@ final router = GoRouter(
         return BaseView(child: child);
       },
       routes: [
+        GoRoute(
+          path: '/system-manager',
+          name: 'system-manager',
+          builder: (context, state) => const SystemManagerHomeView(),
+        ),
+
         // /calendar → 달력 탭
         GoRoute(
           path: '/calendar',

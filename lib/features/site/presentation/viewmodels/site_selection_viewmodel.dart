@@ -1,5 +1,4 @@
 import 'package:sworks_mobile/features/auth/presentation/viewmodels/login_viewmodel.dart';
-import 'package:sworks_mobile/features/site/domain/entities/site_entity.dart';
 import 'package:sworks_mobile/features/site/domain/entities/site_result.dart';
 import 'package:sworks_mobile/features/site/domain/usecases/add_site_usecase.dart';
 import 'package:sworks_mobile/features/site/domain/usecases/get_site_usecase.dart';
@@ -8,16 +7,27 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 /// 비즈니스 선택 화면의 상태
 enum SiteSelectionStatusEnum { initial, loading, success, error }
 
+class SiteUiModel {
+  final String siteName;
+  final int siteSeq;
+  final bool isSelected;
+  const SiteUiModel({
+    required this.siteName,
+    required this.siteSeq,
+    required this.isSelected,
+  });
+}
+
 /// 비즈니스 선택 화면의 상태 클래스
 class SiteSelectionState {
   /// 현재 상태
   final SiteSelectionStatusEnum status;
 
   /// 사업장 목록
-  final List<SiteEntity> sites;
+  final List<SiteUiModel> sites;
 
   /// 선택된 사업장
-  final SiteEntity? selecteSite;
+  final SiteUiModel? selecteSite;
 
   /// 오류 메시지
   final String? errorMessage;
@@ -38,8 +48,8 @@ class SiteSelectionState {
   /// 상태 복사 메서드
   SiteSelectionState copyWith({
     SiteSelectionStatusEnum? status,
-    List<SiteEntity>? sites,
-    SiteEntity? selecteSite,
+    List<SiteUiModel>? sites,
+    SiteUiModel? selecteSite,
     String? errorMessage,
     bool clearSelectedLocation = false,
     bool clearErrorMessage = false,
@@ -78,7 +88,17 @@ class SiteSelectionViewModel extends StateNotifier<SiteSelectionState> {
         // 성공: 위치 목록과 권한 정보 업데이트
         state = state.copyWith(
           status: SiteSelectionStatusEnum.success,
-          sites: result.locations ?? [],
+          sites:
+              result.locations
+                  ?.map(
+                    (e) => SiteUiModel(
+                      siteName: e.siteName,
+                      siteSeq: e.siteSeq,
+                      isSelected: false,
+                    ),
+                  )
+                  .toList() ??
+              [],
           clearErrorMessage: true,
         );
       } else {
@@ -128,7 +148,7 @@ class SiteSelectionViewModel extends StateNotifier<SiteSelectionState> {
   }
 
   /// 사업장 선택
-  void selectSite(SiteEntity site) {
+  void selectSite(SiteUiModel site) {
     state = state.copyWith(selecteSite: site);
   }
 }

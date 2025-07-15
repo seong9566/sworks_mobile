@@ -1,3 +1,4 @@
+import 'package:logger/logger.dart';
 import 'package:sworks_mobile/features/auth/data/models/login_response_model.dart';
 import 'package:sworks_mobile/features/auth/domain/entities/login_result.dart';
 import 'package:sworks_mobile/features/auth/domain/repositories/auth_repository.dart';

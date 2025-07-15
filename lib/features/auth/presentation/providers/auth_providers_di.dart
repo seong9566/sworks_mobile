@@ -30,7 +30,7 @@ final loginUseCaseProvider = Provider<LoginUseCase>((ref) {
 
 // LoginViewModel Provider
 final loginViewModelProvider =
-    StateNotifierProvider<LoginViewModel, LoginStatus>((ref) {
+    StateNotifierProvider<LoginViewModel, LoginState>((ref) {
       final loginUseCase = ref.watch(loginUseCaseProvider);
       return LoginViewModel(loginUseCase);
     });

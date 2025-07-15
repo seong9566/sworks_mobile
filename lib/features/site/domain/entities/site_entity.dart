@@ -2,21 +2,11 @@
 class SiteEntity {
   final int siteSeq;
   final String siteName;
-  final bool isSelected;
 
-  const SiteEntity({
-    required this.siteSeq,
-    required this.siteName,
-    this.isSelected = false,
-  });
+  const SiteEntity({required this.siteSeq, required this.siteName});
 
   /// 선택 상태를 변경한 새 인스턴스 생성
   SiteEntity copyWith({bool? isSelected}) {
-    return SiteEntity(
-      siteSeq: siteSeq,
-      siteName: siteName,
-      isSelected: isSelected ?? this.isSelected,
-    );
+    return SiteEntity(siteSeq: siteSeq, siteName: siteName);
   }
 }
- 

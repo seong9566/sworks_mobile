@@ -1,6 +1,6 @@
 import 'package:logger/logger.dart';
 import 'package:sworks_mobile/core/theme/app_theme.dart';
-import 'package:sworks_mobile/features/auth/presentation/providers/auth_providers_di.dart'; 
+import 'package:sworks_mobile/features/auth/presentation/providers/auth_providers_di.dart';
 import 'package:sworks_mobile/features/auth/presentation/viewmodels/login_viewmodel.dart';
 import 'package:sworks_mobile/features/site/presentation/providers/site_providers_di.dart';
 import 'package:flutter/material.dart';
@@ -18,14 +18,12 @@ class LoginView extends ConsumerStatefulWidget {
 
 class _LoginViewState extends ConsumerState<LoginView> {
   final userIdController = TextEditingController(
-    // 관리자 
+    // 관리자
     text: "253159",
     // 일반
     // text: "253161",
-  ); 
-  final passwordController = TextEditingController(
-    text: "stecdev1234!",
-  ); 
+  );
+  final passwordController = TextEditingController(text: "stecdev1234!");
   @override
   void dispose() {
     userIdController.dispose();
@@ -35,36 +33,56 @@ class _LoginViewState extends ConsumerState<LoginView> {
 
   @override
   Widget build(BuildContext context) {
-    // ViewModel과 State 참조 변경
     final loginVM = ref.read(loginViewModelProvider.notifier);
     final loginState = ref.watch(loginViewModelProvider);
     final siteVM = ref.read(siteSelectionViewModelProvider.notifier);
 
-    ref.listen<LoginStatus>(loginViewModelProvider, (previous, next) {
-      
+    ref.listen<LoginState>(loginViewModelProvider, (previous, next) {
       // 시스템 관리자
       if (next.loginStatus == LoginStatusEnum.systemManager) {
         Logger().d("시스템 관리자");
+
         return;
+      }
+      // 매니저
+      if (next.loginStatus == LoginStatusEnum.manager) {
+        Logger().d("매니저");
+        context.goNamed('site-selection');
+      }
+
+      // 마스터
+      if (next.loginStatus == LoginStatusEnum.master) {
+        Logger().d("마스터");
+        context.goNamed('site-selection');
+      }
+
+      /// 관리자 (소장)
+      if (next.loginStatus == LoginStatusEnum.siteManager) {
+        Logger().d("관리자 (소장)");
+        context.goNamed('site-selection');
       }
 
       /// 유저(담당자, 미화 여사님들)
       if (next.loginStatus == LoginStatusEnum.user) {
+        Logger().d("유저(담당자, 미화 여사님들)");
         siteVM.addsiteLocation(LoginStatusEnum.user);
-        context.goNamed('calendar');
         return;
       }
 
-      
+      /// 유저(담당자, 미화 여사님들)
+      if (next.loginStatus == LoginStatusEnum.guest) {
+        Logger().d("유저(담당자, 미화 여사님들)");
+        siteVM.addsiteLocation(LoginStatusEnum.guest);
+        return;
+      }
 
-      if (next.loginStatus == LoginStatusEnum.manager) {
-        // 로그인이 매니저라면, 사업장 선택 화면
-        context.goNamed('site-selection');
-      } else if (next.loginStatus == LoginStatusEnum.changePwd) {
-        // 비밀번호 변경 화면
+      if (next.loginStatus == LoginStatusEnum.changePwd) {
+        Logger().d("비밀번호 변경 필요");
         context.pushNamed('password-change');
-      } else if (next.loginStatus == LoginStatusEnum.loading) {
-      } else {
+      }
+
+      if (next.loginStatus == LoginStatusEnum.error) {
+        Logger().d("로그인 에러");
         ScaffoldMessenger.of(
           context,
         ).showSnackBar(SnackBar(content: Text(next.errorMessage ?? "")));
@@ -73,60 +91,53 @@ class _LoginViewState extends ConsumerState<LoginView> {
 
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            Spacer(flex: 1),
-            logo(),
-            _inputForm(loginVM, loginState),
-            Spacer(flex: 4),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+          child: Column(
+            children: [
+              Spacer(flex: 1),
+              logo(),
+              const SizedBox(height: 16),
+              _inputForm(loginVM, loginState),
+              Spacer(flex: 4),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Image logo() => Image.asset("assets/img/sworks_logo.png", width: 120, height:120);
+  Image logo() =>
+      Image.asset("assets/img/sworks_logo.png", width: 120, height: 120);
 
-  Widget _inputForm(LoginViewModel loginVM, LoginStatus loginState) {
-    return Container(
-            margin:  EdgeInsets.symmetric(horizontal: p16, vertical: p16),
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: Colors.white, 
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                AuthInputField(
-                  hintText: '아이디',
-                  controller: userIdController,
-                ), // 한글 힌트
-                const SizedBox(height: 16),
-                AuthInputField(
-                  hintText: '비밀번호',
-                  controller: passwordController,
-                  isPassword: true,
-                ), // 한글 힌트
-                const SizedBox(height: 16),
-                _loginButton(loginVM, loginState), // ViewModel과 State 전달
-              ],
-            ),
-          );
+  Widget _inputForm(LoginViewModel loginVM, LoginState loginState) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        AuthInputField(hintText: '아이디', controller: userIdController),
+        const SizedBox(height: 16),
+        AuthInputField(
+          hintText: '비밀번호',
+          controller: passwordController,
+          isPassword: true,
+          isPasswordVisible: loginState.isPasswordVisible,
+          onSuffixIconPressed: () => loginVM.togglePasswordVisibility(),
+        ),
+        const SizedBox(height: 16),
+        _loginButton(loginVM, loginState),
+      ],
+    );
   }
 
   Widget _loginButton(
     LoginViewModel vm,
-    LoginStatus state, // 타입 변경
+    LoginState state, // 타입 변경
   ) {
     return DefaultButton(
       onPressed: () {
-                Logger().d("[LoginView] login: ${userIdController.text}, ${passwordController.text}");
-                // context.go('/calendar');
-                vm.login(userIdController.text, passwordController.text);
+        vm.login(userIdController.text, passwordController.text);
       },
       text: '로그인',
     );
   }
-
- }
+}
