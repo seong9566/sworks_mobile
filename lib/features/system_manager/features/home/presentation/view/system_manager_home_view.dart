@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sworks_mobile/core/theme/app_theme.dart';
-import 'package:sworks_mobile/features/system_manager/presentation/view/provider/system_manager_home_view_di.dart';
-import 'package:sworks_mobile/features/system_manager/presentation/view/widgets/site_list_view.dart';
+import 'package:sworks_mobile/features/system_manager/features/home/presentation/view/provider/system_manager_home_view_di.dart';
+import 'package:sworks_mobile/features/system_manager/features/home/presentation/view/widgets/site_list_view.dart';
 import 'package:sworks_mobile/features/widgets/app_bar.dart';
 import 'package:sworks_mobile/features/widgets/default_floating_action_button.dart';
 import 'package:sworks_mobile/features/widgets/default_tab_bar.dart';
@@ -19,7 +19,7 @@ class _SystemManagerHomeViewState extends ConsumerState<SystemManagerHomeView>
     with TickerProviderStateMixin {
   late TabController _tabController;
   late ScrollController siteScrollController;
-  double scrollPosition = 0.0;
+  double siteScrollPosition = 0.0;
 
   @override
   void initState() {
@@ -37,9 +37,9 @@ class _SystemManagerHomeViewState extends ConsumerState<SystemManagerHomeView>
     /// Scroll 리스너
     siteScrollController.addListener(() {
       double current = siteScrollController.position.pixels;
-      if ((current - scrollPosition).abs() > 5) {
+      if ((current - siteScrollPosition).abs() > 5) {
         setState(() {
-          scrollPosition = current;
+          siteScrollPosition = current;
         });
       }
     });
@@ -50,11 +50,18 @@ class _SystemManagerHomeViewState extends ConsumerState<SystemManagerHomeView>
     return Scaffold(
       appBar: mainAppBar(context, () {}),
       body: _body(),
-      floatingActionButton: DefaultFloatingActionButton(
-        scrollPosition: scrollPosition,
-        title: '사업장 추가',
-        onPressed: () {},
-      ),
+      floatingActionButton:
+          ref.watch(systemManagerViewModelProvider).tabIndex == 0
+          ? DefaultFloatingActionButton(
+              scrollPosition: siteScrollPosition,
+              title: '사업장 추가',
+              onPressed: () {},
+            )
+          : DefaultFloatingActionButton(
+              scrollPosition: siteScrollPosition,
+              title: '관리자 추가',
+              onPressed: () {},
+            ),
     );
   }
 

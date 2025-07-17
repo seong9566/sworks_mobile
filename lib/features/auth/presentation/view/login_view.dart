@@ -41,7 +41,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
       // 시스템 관리자
       if (next.loginStatus == LoginStatusEnum.systemManager) {
         Logger().d("시스템 관리자");
-
+        context.goNamed('system-manager');
         return;
       }
       // 매니저

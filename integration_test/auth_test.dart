@@ -13,6 +13,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:go_router/go_router.dart';
 
 // Integration 테스트를 할 땐 외부 API/ IO작업이 필요한 부분만 Mock해주면 된다 굳이 ViewModel까지 Mock를 하면 불필요한 작업이 될 수 있다.
 

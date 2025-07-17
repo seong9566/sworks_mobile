@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "mysql-mcp-server": {
+      "command": "/Users/stecdev/.nvm/versions/node/v22.11.0/bin/node",
+      "args": [
+        "/Users/stecdev/Desktop/workspace/flutter_project/sworks_mobile/node_modules/mcp-server-mysql/dist/index.js"
+      ],
+      "env": {
+        "MYSQL_URL": "mysql://123.2.156.28:3306/sworks_mobile",
+        "MYSQL_USER": "USERNAME",
+        "MYSQL_PASS": "PASSWORD",
+        "MYSQL_DB": "sworks_mobile",
+        "ALLOW_INSERT_OPERATION": "true",
+        "ALLOW_UPDATE_OPERATION": "true",
+        "ALLOW_DELETE_OPERATION": "true",
+        "PATH": "/Users/stecdev/.nvm/versions/node/v22.11.0/bin:/usr/bin:/bin",
+        "NODE_PATH": "/Users/stecdev/.nvm/versions/node/v22.11.0/lib/node_modules"
+      }
+    }
+  }
+}

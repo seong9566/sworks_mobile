@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sworks_mobile/features/system_manager/presentation/view/widgets/site_card_item.dart';
+import 'package:sworks_mobile/features/system_manager/features/home/presentation/view/widgets/site_card_item.dart';
 
 class SiteListView extends StatelessWidget {
   final ScrollController scrollController;
