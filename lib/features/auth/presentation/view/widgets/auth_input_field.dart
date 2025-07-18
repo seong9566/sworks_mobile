@@ -37,11 +37,11 @@ class AuthInputField extends StatelessWidget {
               : null,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: Colors.transparent),
+            borderSide: BorderSide(color: borderGrayColor),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: Colors.transparent),
+            borderSide: BorderSide(color: primaryColor),
           ),
           hintText: hintText,
           hintStyle: const TextStyle(fontSize: 16, color: grayDarkColor),
@@ -53,7 +53,7 @@ class AuthInputField extends StatelessWidget {
           ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: Colors.transparent),
+            borderSide: BorderSide(color: borderGrayColor),
           ),
         ),
       ),

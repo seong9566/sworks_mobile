@@ -34,7 +34,7 @@ class _SiteSelectionViewState extends ConsumerState<SeleteSiteView> {
       final currentState = ref.read(siteSelectionViewModelProvider);
       // 성공 시에만 화면 이동
       if (currentState.status == SiteSelectionStatusEnum.success) {
-        if (mounted) context.goNamed('system-manager');
+        if (mounted) context.goNamed('system-manager-home');
       }
     } catch (e) {
       // 예외 발생 시 로딩 다이얼로그 닫기 및 스낵바 표시

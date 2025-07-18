@@ -9,7 +9,7 @@ class AppTheme {
       brightness: Brightness.light,
       useMaterial3: false,
       appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.white,
+        backgroundColor: scaffoldColor,
         elevation: 0,
         centerTitle: true,
       ),
@@ -31,11 +31,11 @@ class AppTheme {
   /// 다크 모드: 텍스트 테마만 Manrope 폰트로 적용
   static ThemeData get darkTheme {
     final base = ThemeData(
-      scaffoldBackgroundColor: Colors.black,
+      scaffoldBackgroundColor: scaffoldColor,
       brightness: Brightness.dark,
       useMaterial3: false,
       appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.black,
+        backgroundColor: scaffoldColor,
         elevation: 0,
         centerTitle: true,
       ),
@@ -70,10 +70,10 @@ const Color unSelectColor = Color(0xff61758A);
 const Color selectColor = Color(0xff121417);
 const Color indicatorColor = Color(0xffc4cdd8);
 const Color primaryColor = Color(0xff223377);
-// const Color scaffoldColor = Color(0xffFBFCFF);
-const Color scaffoldColor = Color(0xffFFFFFF);
+const Color scaffoldColor = Color(0xffFBFCFF);
+// const Color scaffoldColor = Color(0xffFFFFFF);
 const Color grayBorderColor = Color(0xffE7E5E4);
-const Color inputFieldColor = Color(0xffF5F7FA);
+const Color inputFieldColor = Color(0xffFFFFFF);
 const Color grayDarkColor = Color(0xff8C978D);
 const Color borderGrayColor = Color(0xffE7E5E4);
 const Color descriptionDarkColor = Color(0xff333D4B);

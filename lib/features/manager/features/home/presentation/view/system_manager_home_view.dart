@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sworks_mobile/core/theme/app_theme.dart';
-import 'package:sworks_mobile/features/system_manager/features/home/presentation/view/provider/system_manager_home_view_di.dart';
-import 'package:sworks_mobile/features/system_manager/features/home/presentation/view/widgets/site_list_view.dart';
+import 'package:sworks_mobile/features/manager/features/home/presentation/providers/system_manager_providers_di.dart';
+import 'package:sworks_mobile/features/manager/features/home/presentation/view/widgets/site_list_view.dart';
 import 'package:sworks_mobile/features/widgets/app_bar.dart';
 import 'package:sworks_mobile/features/widgets/default_floating_action_button.dart';
 import 'package:sworks_mobile/features/widgets/default_tab_bar.dart';
@@ -24,6 +24,9 @@ class _SystemManagerHomeViewState extends ConsumerState<SystemManagerHomeView>
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref.read(systemManagerViewModelProvider.notifier).getSiteList();
+    });
     siteScrollController = ScrollController();
     _tabController = TabController(length: 2, vsync: this);
 
@@ -50,18 +53,7 @@ class _SystemManagerHomeViewState extends ConsumerState<SystemManagerHomeView>
     return Scaffold(
       appBar: mainAppBar(context, () {}),
       body: _body(),
-      floatingActionButton:
-          ref.watch(systemManagerViewModelProvider).tabIndex == 0
-          ? DefaultFloatingActionButton(
-              scrollPosition: siteScrollPosition,
-              title: '사업장 추가',
-              onPressed: () {},
-            )
-          : DefaultFloatingActionButton(
-              scrollPosition: siteScrollPosition,
-              title: '관리자 추가',
-              onPressed: () {},
-            ),
+      floatingActionButton: _floatingActionButton(),
     );
   }
 
@@ -101,5 +93,21 @@ class _SystemManagerHomeViewState extends ConsumerState<SystemManagerHomeView>
         ],
       ),
     );
+  }
+
+  Widget _floatingActionButton() {
+    return ref.watch(systemManagerViewModelProvider).tabIndex == 0
+        ? DefaultFloatingActionButton(
+            scrollPosition: siteScrollPosition,
+            title: '사업장 추가',
+            onPressed: () {
+              ref.read(systemManagerViewModelProvider.notifier).getSiteList();
+            },
+          )
+        : DefaultFloatingActionButton(
+            scrollPosition: siteScrollPosition,
+            title: '관리자 추가',
+            onPressed: () {},
+          );
   }
 }
