@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sworks_mobile/core/theme/app_theme.dart';
 
 AppBar mainAppBar(BuildContext context, VoidCallback onNotificationPressed) {
@@ -29,5 +30,26 @@ AppBar mainAppBar(BuildContext context, VoidCallback onNotificationPressed) {
         ),
       ),
     ],
+  );
+}
+
+AppBar leftBackAppBar(BuildContext context, String title) {
+  return AppBar(
+    centerTitle: true,
+    title: Text(
+      title,
+      style: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.bold,
+        color: descriptionDarkColor,
+      ),
+    ),
+    leading: Padding(
+      padding: const EdgeInsets.only(left: 16.0),
+      child: IconButton(
+        icon: Icon(Icons.arrow_back, size: 24, color: Colors.black, weight: 38),
+        onPressed: () => context.pop(),
+      ),
+    ),
   );
 }

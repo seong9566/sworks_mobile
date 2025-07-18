@@ -27,7 +27,6 @@ class ManagerSiteRemoteDataSourceImpl implements ManagerSiteRemoteDataSource {
       );
 
       final Map<String, dynamic> responseData = response.data;
-      Logger().d("responseData: $responseData");
       // data가 없으면 빈 리스트로 처리
       final items =
           responseData['data'] != null && responseData['data']['items'] != null

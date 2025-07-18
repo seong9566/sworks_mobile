@@ -1,6 +1,6 @@
 import 'package:sworks_mobile/features/manager/home/domain/entities/manager_site_entity.dart';
 
-class ManagerSiteList {
+class ManagerSite {
   final int siteSeq;
   final String siteName;
   final int siteTypeSeq;
@@ -9,7 +9,7 @@ class ManagerSiteList {
   final String siteAddress;
 
   final List<ManagerContractList> managerContract;
-  const ManagerSiteList({
+  const ManagerSite({
     required this.siteSeq,
     required this.siteName,
     required this.siteTypeSeq,
@@ -20,8 +20,8 @@ class ManagerSiteList {
   });
 
   //init
-  factory ManagerSiteList.init() {
-    return ManagerSiteList(
+  factory ManagerSite.init() {
+    return ManagerSite(
       siteSeq: 0,
       siteName: '',
       siteTypeSeq: 0,
@@ -32,8 +32,8 @@ class ManagerSiteList {
     );
   }
   // 도메인 엔티티에서 변환
-  factory ManagerSiteList.fromEntity(ManagerSiteEntity entity) {
-    return ManagerSiteList(
+  factory ManagerSite.fromEntity(ManagerSiteEntity entity) {
+    return ManagerSite(
       siteSeq: entity.siteSeq,
       siteName: entity.siteName,
       siteTypeSeq: entity.siteTypeSeq,

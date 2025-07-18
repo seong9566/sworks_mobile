@@ -5,7 +5,7 @@ import 'package:sworks_mobile/features/manager/home/domain/usecase/manager_get_s
 
 class SystemManagerHomeState {
   final int tabIndex;
-  final List<ManagerSiteList> siteList;
+  final List<ManagerSite> siteList;
   final bool isLoading;
   final int lastSiteSeq;
   final int pageSize;
@@ -20,7 +20,7 @@ class SystemManagerHomeState {
 
   SystemManagerHomeState copyWith({
     int? tabIndex,
-    List<ManagerSiteList>? siteList,
+    List<ManagerSite>? siteList,
     bool? isLoading,
     int? lastSiteSeq,
     int? pageSize,

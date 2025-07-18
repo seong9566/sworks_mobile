@@ -1,4 +1,5 @@
 import 'package:sworks_mobile/features/auth/presentation/view/password_change_view.dart';
+import 'package:sworks_mobile/features/manager/home/domain/entities/manager_site_list.dart';
 import 'package:sworks_mobile/features/manager/home/presentation/view/system_manager_home_view.dart';
 import 'package:sworks_mobile/features/base/presentation/base_view.dart';
 import 'package:sworks_mobile/features/site/presentation/view/selete_site_view.dart';
@@ -64,9 +65,10 @@ final router = GoRouter(
           builder: (context, state) => const SystemManagerHomeView(),
           routes: [
             GoRoute(
-              path: 'site-edit',
+              path: '/site-edit',
               name: 'site-edit',
-              builder: (context, state) => const SiteEditView(),
+              builder: (context, state) =>
+                  SiteEditView(site: state.extra as ManagerSite),
             ),
             // 시스템 관리자의 다른 하위 라우트들...
           ],

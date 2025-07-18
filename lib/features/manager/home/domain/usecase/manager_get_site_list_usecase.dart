@@ -11,7 +11,7 @@ class ManagerGetSiteListUsecase {
   ///
   /// [lastSiteSeq] 현재 페이지에 있는 List의 마지막 인덱스 값
   /// [pageSize] 한 페이지에 몇개 출력할 것인지
-  Future<List<ManagerSiteList>> call({
+  Future<List<ManagerSite>> call({
     required int lastSiteSeq,
     required int pageSize,
   }) async {
@@ -21,7 +21,7 @@ class ManagerGetSiteListUsecase {
     );
 
     return response.data
-        .map((entity) => ManagerSiteList.fromEntity(entity))
+        .map((entity) => ManagerSite.fromEntity(entity))
         .toList();
   }
 }
