@@ -1,12 +1,12 @@
 import 'package:sworks_mobile/features/auth/presentation/view/password_change_view.dart';
-import 'package:sworks_mobile/features/manager/features/home/presentation/view/system_manager_home_view.dart';
+import 'package:sworks_mobile/features/manager/home/presentation/view/system_manager_home_view.dart';
 import 'package:sworks_mobile/features/base/presentation/base_view.dart';
 import 'package:sworks_mobile/features/site/presentation/view/selete_site_view.dart';
 import 'package:sworks_mobile/features/calendar/presentation/view/calendar_view.dart';
 import 'package:sworks_mobile/features/auth/presentation/view/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sworks_mobile/features/manager/features/site_edit/view/site_edit_view.dart';
+import 'package:sworks_mobile/features/manager/site_edit/view/site_edit_view.dart';
 
 import 'features/profile/presentation/profile_view.dart';
 

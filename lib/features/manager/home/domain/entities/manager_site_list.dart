@@ -1,4 +1,4 @@
-import 'package:sworks_mobile/features/manager/features/home/domain/entities/manager_site_entity.dart';
+import 'package:sworks_mobile/features/manager/home/domain/entities/manager_site_entity.dart';
 
 class ManagerSiteList {
   final int siteSeq;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sworks_mobile/features/manager/features/home/presentation/providers/system_manager_providers_di.dart';
-import 'package:sworks_mobile/features/manager/features/home/presentation/view/widgets/site_card_item.dart';
+import 'package:sworks_mobile/features/manager/home/presentation/providers/system_manager_providers_di.dart';
+import 'package:sworks_mobile/features/manager/home/presentation/view/widgets/site_card_item.dart';
 
 class SiteListView extends ConsumerWidget {
   final ScrollController scrollController;

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 import 'package:sworks_mobile/core/theme/app_theme.dart';
-import 'package:sworks_mobile/features/manager/features/home/domain/entities/manager_site_list.dart';
+import 'package:sworks_mobile/features/manager/home/domain/entities/manager_site_list.dart';
 
 class SiteCardItem extends StatelessWidget {
   final ManagerSiteList site;
@@ -8,6 +9,10 @@ class SiteCardItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Logger().d("site: ${site.siteName}");
+    Logger().d("site: ${site.siteTypeName}");
+    Logger().d("site: ${site.contractServiceTypeNames}");
+
     return Container(
       padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),
       margin: const EdgeInsets.only(bottom: 16, left: 16, right: 16),

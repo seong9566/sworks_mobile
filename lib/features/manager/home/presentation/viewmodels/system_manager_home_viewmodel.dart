@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
-import 'package:sworks_mobile/features/manager/features/home/domain/entities/manager_site_list.dart';
-import 'package:sworks_mobile/features/manager/features/home/domain/usecase/manager_get_site_list_usecase.dart';
+import 'package:sworks_mobile/features/manager/home/domain/entities/manager_site_list.dart';
+import 'package:sworks_mobile/features/manager/home/domain/usecase/manager_get_site_list_usecase.dart';
 
 class SystemManagerHomeState {
   final int tabIndex;
@@ -50,7 +50,6 @@ class SystemManagerViewModel extends StateNotifier<SystemManagerHomeState> {
   ///
   /// [refresh]가 true인 경우 목록을 초기화하고 처음부터 다시 가져옴
   Future<void> getSiteList({bool refresh = false}) async {
-    Logger().d("사업장 List Get!");
     // 로딩 상태 설정
     state = state.copyWith(isLoading: true);
 

@@ -1,4 +1,4 @@
-import 'package:sworks_mobile/features/manager/features/home/data/models/manager_site_response_model.dart';
+import 'package:sworks_mobile/features/manager/home/data/models/manager_site_response_model.dart';
 import 'package:sworks_mobile/network/base_response.dart';
 
 abstract class ManagerSiteRemoteDataSource {

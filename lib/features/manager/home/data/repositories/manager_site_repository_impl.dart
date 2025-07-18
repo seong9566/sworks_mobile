@@ -1,7 +1,7 @@
-import 'package:sworks_mobile/features/manager/features/home/data/datasources/manager_site_remote_data_source.dart';
-import 'package:sworks_mobile/features/manager/features/home/data/models/manager_site_response_model.dart';
-import 'package:sworks_mobile/features/manager/features/home/domain/entities/manager_site_entity.dart';
-import 'package:sworks_mobile/features/manager/features/home/domain/repositories/manager_site_repository.dart';
+import 'package:sworks_mobile/features/manager/home/data/datasources/manager_site_remote_data_source.dart';
+import 'package:sworks_mobile/features/manager/home/data/models/manager_site_response_model.dart';
+import 'package:sworks_mobile/features/manager/home/domain/entities/manager_site_entity.dart';
+import 'package:sworks_mobile/features/manager/home/domain/repositories/manager_site_repository.dart';
 import 'package:sworks_mobile/network/base_response.dart';
 
 class ManagerSiteRepositoryImpl implements ManagerSiteRepository {

@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:sworks_mobile/features/manager/features/home/domain/entities/manager_site_entity.dart';
+import 'package:sworks_mobile/features/manager/home/domain/entities/manager_site_entity.dart';
 
 part 'manager_site_response_model.g.dart';
 part 'manager_site_response_model.freezed.dart';
