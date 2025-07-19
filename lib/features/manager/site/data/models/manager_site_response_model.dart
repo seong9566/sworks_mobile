@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:sworks_mobile/features/manager/home/domain/entities/manager_site_entity.dart';
+
+import '../../domain/entities/manager_site_entity.dart';
 
 part 'manager_site_response_model.g.dart';
 part 'manager_site_response_model.freezed.dart';
@@ -62,8 +63,8 @@ extension ContractModelX on ContractModel {
   /// 데이터 모델을 도메인 엔티티로 변환
   ManagerContractEntity toEntity() {
     return ManagerContractEntity(
-      contractSeq: contractSeq.toString(),
-      serviceTypeSeq: serviceTypeSeq.toString(),
+      contractSeq: contractSeq,
+      serviceTypeSeq: serviceTypeSeq,
       serviceTypeName: serviceTypeName,
       contractAmount: contractAmount?.toString() ?? '',
       contractStartDt: contractStartDt,
@@ -71,7 +72,7 @@ extension ContractModelX on ContractModel {
       contractStaff: contractStaff,
       contractManager: contractManager,
       comments: comments ?? '',
-      status: status.toString(),
+      status: status,
     );
   }
 }

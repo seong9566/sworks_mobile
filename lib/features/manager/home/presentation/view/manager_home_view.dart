@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sworks_mobile/core/theme/app_theme.dart';
-import 'package:sworks_mobile/features/manager/home/presentation/providers/system_manager_providers_di.dart';
-import 'package:sworks_mobile/features/manager/home/presentation/view/widgets/site_list_view.dart';
 import 'package:sworks_mobile/features/widgets/app_bar.dart';
 import 'package:sworks_mobile/features/widgets/default_floating_action_button.dart';
 import 'package:sworks_mobile/features/widgets/default_tab_bar.dart';
+
+import '../../../site/view/manager_site_view.dart';
+import '../providers/manager_home_providers_di.dart';
 
 class SystemManagerHomeView extends ConsumerStatefulWidget {
   const SystemManagerHomeView({super.key});
@@ -24,16 +25,14 @@ class _SystemManagerHomeViewState extends ConsumerState<SystemManagerHomeView>
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      ref.read(systemManagerViewModelProvider.notifier).getSiteList();
-    });
+
     siteScrollController = ScrollController();
     _tabController = TabController(length: 2, vsync: this);
 
     /// TabBar 리스너
     _tabController.addListener(() {
       ref
-          .read(systemManagerViewModelProvider.notifier)
+          .read(managerViewModelProvider.notifier)
           .changeTab(_tabController.index);
     });
 
@@ -86,9 +85,8 @@ class _SystemManagerHomeViewState extends ConsumerState<SystemManagerHomeView>
     return Expanded(
       child: TabBarView(
         controller: _tabController,
-        // physics: const NeverScrollableScrollPhysics(),
         children: [
-          SiteListView(scrollController: siteScrollController),
+          ManagerSiteView(scrollController: siteScrollController),
           Center(child: Text('관리자')),
         ],
       ),
@@ -96,7 +94,7 @@ class _SystemManagerHomeViewState extends ConsumerState<SystemManagerHomeView>
   }
 
   Widget _floatingActionButton() {
-    return ref.watch(systemManagerViewModelProvider).tabIndex == 0
+    return ref.watch(managerViewModelProvider).tabIndex == 0
         ? SizedBox()
         : DefaultFloatingActionButton(
             scrollPosition: siteScrollPosition,

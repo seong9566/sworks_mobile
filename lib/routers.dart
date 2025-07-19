@@ -1,14 +1,14 @@
 import 'package:sworks_mobile/features/auth/presentation/view/password_change_view.dart';
-import 'package:sworks_mobile/features/manager/home/domain/entities/manager_site_list.dart';
-import 'package:sworks_mobile/features/manager/home/presentation/view/system_manager_home_view.dart';
+import 'package:sworks_mobile/features/manager/home/presentation/view/manager_home_view.dart';
 import 'package:sworks_mobile/features/base/presentation/base_view.dart';
 import 'package:sworks_mobile/features/site/presentation/view/selete_site_view.dart';
 import 'package:sworks_mobile/features/calendar/presentation/view/calendar_view.dart';
 import 'package:sworks_mobile/features/auth/presentation/view/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sworks_mobile/features/manager/site_edit/view/site_edit_view.dart';
 
+import 'features/manager/site/domain/entities/manager_site_list.dart';
+import 'features/manager/site/view/site_edit_view.dart';
 import 'features/profile/presentation/profile_view.dart';
 
 // routes.dart
@@ -19,7 +19,8 @@ final GlobalKey<NavigatorState> systemManagerNavKey =
 
 final router = GoRouter(
   navigatorKey: rootNavKey,
-  initialLocation: '/login',
+  // initialLocation: '/login',
+  initialLocation: '/system-manager-home',
   routes: [
     // 인증 관련 라우트 (ShellRoute 외부)
     GoRoute(

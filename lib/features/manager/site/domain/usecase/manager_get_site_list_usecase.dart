@@ -1,6 +1,5 @@
-import 'package:logger/logger.dart';
-import 'package:sworks_mobile/features/manager/home/domain/entities/manager_site_list.dart';
-import 'package:sworks_mobile/features/manager/home/domain/repositories/manager_site_repository.dart';
+import '../entities/manager_site_list.dart';
+import '../repositories/manager_site_repository.dart';
 
 class ManagerGetSiteListUsecase {
   final ManagerSiteRepository _repository;

@@ -1,4 +1,4 @@
-import 'package:sworks_mobile/features/manager/home/domain/entities/manager_site_entity.dart';
+import 'manager_site_entity.dart';
 
 class ManagerSite {
   final int siteSeq;
@@ -52,8 +52,8 @@ class ManagerSite {
 }
 
 class ManagerContractList {
-  final String contractSeq;
-  final String serviceTypeSeq;
+  final int contractSeq;
+  final int serviceTypeSeq;
   final String serviceTypeName;
   final String contractAmount;
   final String contractStartDt;
@@ -61,7 +61,7 @@ class ManagerContractList {
   final String contractStaff;
   final String contractManager;
   final String comments;
-  final String status;
+  final bool status;
   const ManagerContractList({
     required this.contractSeq,
     required this.serviceTypeSeq,
@@ -78,8 +78,8 @@ class ManagerContractList {
   //init
   factory ManagerContractList.init() {
     return ManagerContractList(
-      contractSeq: '',
-      serviceTypeSeq: '',
+      contractSeq: 0,
+      serviceTypeSeq: 0,
       serviceTypeName: '',
       contractAmount: '',
       contractStartDt: '',
@@ -87,7 +87,7 @@ class ManagerContractList {
       contractStaff: '',
       contractManager: '',
       comments: '',
-      status: '',
+      status: false,
     );
   }
   // 도메인 엔티티에서 변환

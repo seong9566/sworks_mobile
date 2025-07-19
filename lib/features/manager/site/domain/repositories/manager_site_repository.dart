@@ -1,5 +1,6 @@
-import 'package:sworks_mobile/features/manager/home/domain/entities/manager_site_entity.dart';
 import 'package:sworks_mobile/network/base_response.dart';
+
+import '../entities/manager_site_entity.dart';
 
 abstract class ManagerSiteRepository {
   /// 사이트 목록을 페이지네이션으로 가져오는 메서드

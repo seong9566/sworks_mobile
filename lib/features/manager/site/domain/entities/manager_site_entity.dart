@@ -19,8 +19,8 @@ class ManagerSiteEntity {
 }
 
 class ManagerContractEntity {
-  final String contractSeq;
-  final String serviceTypeSeq;
+  final int contractSeq;
+  final int serviceTypeSeq;
   final String serviceTypeName;
   final String contractAmount;
   final String contractStartDt;
@@ -28,7 +28,7 @@ class ManagerContractEntity {
   final String contractStaff;
   final String contractManager;
   final String comments;
-  final String status;
+  final bool status;
 
   ManagerContractEntity({
     required this.contractSeq,

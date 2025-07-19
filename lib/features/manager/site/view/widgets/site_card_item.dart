@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sworks_mobile/core/theme/app_theme.dart';
-import 'package:sworks_mobile/features/manager/home/domain/entities/manager_site_list.dart';
+
+import '../../domain/entities/manager_site_list.dart';
 
 class SiteCardItem extends StatelessWidget {
   final ManagerSite site;
@@ -18,7 +19,6 @@ class SiteCardItem extends StatelessWidget {
       ),
       child: Row(
         children: [
-          // 첫 번째 열: 사이트명 (30%)
           Expanded(
             flex: 4,
             child: Text(

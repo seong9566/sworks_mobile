@@ -47,7 +47,12 @@ AppBar leftBackAppBar(BuildContext context, String title) {
     leading: Padding(
       padding: const EdgeInsets.only(left: 16.0),
       child: IconButton(
-        icon: Icon(Icons.arrow_back, size: 24, color: Colors.black, weight: 38),
+        icon: Icon(
+          Icons.arrow_back_ios,
+          size: 24,
+          color: Colors.black,
+          weight: 38,
+        ),
         onPressed: () => context.pop(),
       ),
     ),

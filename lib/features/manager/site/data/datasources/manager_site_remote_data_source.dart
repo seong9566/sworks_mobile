@@ -1,5 +1,6 @@
-import 'package:sworks_mobile/features/manager/home/data/models/manager_site_response_model.dart';
 import 'package:sworks_mobile/network/base_response.dart';
+
+import '../models/manager_site_response_model.dart';
 
 abstract class ManagerSiteRemoteDataSource {
   /// 사이트 목록을 페이지네이션으로 가져오는 메서드
